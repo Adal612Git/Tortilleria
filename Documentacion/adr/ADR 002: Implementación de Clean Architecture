@@ -1,0 +1,29 @@
+ADR 002: Implementación de Clean Architecture
+
+Fecha: 27-07-2025
+
+Contexto
+
+El sistema debe ser fácil de mantener, escalar, testear y modificar. Necesitamos una estructura clara que permita separación de responsabilidades, para reducir complejidad y facilitar futuras ampliaciones o modificaciones.
+
+Opciones Evaluadas
+
+Clean Architecture: Arquitectura en capas clara, desacoplada.
+
+MVC: Sencilla pero tiende al acoplamiento.
+
+Arquitectura Monolítica tradicional: Complejidad y dificultad para mantenimiento.
+
+Decisión
+
+Seleccionamos Clean Architecture.
+
+Justificación
+
+Proporciona una separación clara entre lógica de negocio (core), infraestructura (bases de datos, APIs externas) y presentación (interfaces de usuario).
+
+Facilita testing unitario, de integración y automatización de pruebas.
+
+Permite escalar y modificar fácilmente cualquier componente del sistema.
+
+Ideal para proyectos que evolucionan constantemente, manteniendo claridad y simplicidad.

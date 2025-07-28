@@ -1,0 +1,29 @@
+ADR 001: Selección de SQLite como Base de Datos
+
+Fecha: 27-07-2025
+
+Contexto
+
+Necesitamos una base de datos simple, rápida, local y que no requiera instalación complicada o servidores adicionales, ya que nuestro usuario objetivo es no técnico y solo necesita ejecutar un programa desde una USB en una sola computadora.
+
+Opciones Evaluadas
+
+SQLite: Base de datos embebida, liviana, sin servidor.
+
+PostgreSQL: Robusta, escalable, requiere instalación y administración avanzada.
+
+Firebase: En la nube, dependiente de internet, costos potenciales elevados.
+
+Decisión
+
+Seleccionamos SQLite.
+
+Justificación
+
+SQLite no requiere instalación adicional ni configuración avanzada.
+
+Optimizada para aplicaciones locales con pocos usuarios concurrentes.
+
+Ideal para aplicaciones offline-first, cumpliendo con la necesidad de funcionamiento sin conexión.
+
+Reduce costos, complejidad técnica y dependencia externa.

@@ -1,0 +1,29 @@
+ADR 003: Flujo Offline-First/Local
+
+Fecha: 27-07-2025
+
+Contexto
+
+La aplicación debe funcionar completamente offline, ya que no hay garantía de conexión estable a internet. El cliente necesita que todas las operaciones se realicen localmente, con sincronización o respaldo mínimo manual.
+
+Opciones Evaluadas
+
+Offline-First (SQLite local): Totalmente local, no depende de red.
+
+Cloud-First (Firebase/Cloud DB): Dependiente de conexión.
+
+Modelo híbrido (local con sincronización cloud): Aumenta complejidad, costos.
+
+Decisión
+
+Seleccionamos un enfoque Offline-First con SQLite local.
+
+Justificación
+
+Garantiza disponibilidad total del sistema sin importar el estado de conexión.
+
+Minimiza problemas técnicos derivados de caídas de red.
+
+Facilita mantenimiento y soporte al no depender de infraestructura externa.
+
+Se adapta perfectamente al contexto operativo del cliente objetivo.

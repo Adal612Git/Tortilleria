@@ -1,0 +1,36 @@
+tortilleria/
+├─ src/
+│  ├─ core/
+│  │  ├─ entities/           # Objetos de dominio puros (Usuario, Producto, Venta…)
+│  │  └─ errors/             # Excepciones genéricas del dominio
+│  │
+│  ├─ application/
+│  │  ├─ usecases/           # Casos de uso (RegistrarVenta, CerrarCaja…)
+│  │  ├─ dto/                # Data Transfer Objects si aplican
+│  │  └─ services/           # Lógica orquestadora de los usecases
+│  │
+│  ├─ infrastructure/
+│  │  ├─ db/                 # Implementaciones SQLite (repositorios, migraciones)
+│  │  ├─ api/                # Clientes HTTP, payments, notificaciones, etc.
+│  │  └─ config/             # Lectura de variables de entorno, logger, etc.
+│  │
+│  └─ presentation/
+│     ├─ controllers/        # Controladores (web/API handlers)
+│     ├─ routes/             # Definición de endpoints o rutas
+│     └─ views/              # Si hay frontend server‐side (templates)
+│
+└─ tests/
+   ├─ unit/                  # Pruebas unitarias de core y application
+   └─ integration/           # Pruebas de infraestructura y rutas
+
+
+🎯 Qué va (y qué no va) en cada capa
+Capa	Contenido	NO incluir…
+core	– Clases de dominio y validaciones	– Dependencias externas (DB, web)
+– Enumeraciones, errores de negocio	– Frameworks, ORMs
+application	– Casos de uso (lógica de orquestación)	– Queries SQL directas
+– DTOs y mapeos entre entidades y peticiones	– Dependencias de infraestructura
+infrastructure	– Repositorios, persistencia SQLite	– Lógica de negocio (“if” para reglas)
+– Integraciones externas (email, SMS…)	– Controladores HTTP
+presentation	– Controladores, routers, templates UI	– Lógica de acceso a BD
+
