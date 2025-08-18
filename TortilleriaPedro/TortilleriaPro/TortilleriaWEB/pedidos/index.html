@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Pedidos con botones ajustados</title>
+<link rel="stylesheet" href="style.css">
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+
+<div class="contenedor">
+
+  <div class="columna-izquierda">
+    <h1>Pedidos Generales</h1>
+      <div class="botones-filtro">
+    <button data-estado="todos" class="activo">Todos</button>
+    <button data-estado="pendiente">Pendiente</button>
+    <button data-estado="en_proceso">En proceso</button>
+    <button data-estado="entregado">Entregado</button>
+    <button data-estado="cancelado">Cancelado</button>
+  </div>
+    <div class="grid-comandas"></div> <!-- Vacío para carga dinámica -->
+  </div>
+
+  <div class="columna-derecha">
+    <h1>Pedidos Especiales</h1>
+    <div class="grid-comandas"></div> <!-- Vacío para carga dinámica -->
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>

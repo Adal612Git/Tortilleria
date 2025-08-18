@@ -1,0 +1,567 @@
+/* === VARIABLES === */
+:root {
+  --maiz-palida: #FFF7DF;
+  --cafe-choco: #7A4E21;
+  --dorado-suave: #F5D99D;
+  --cafe-leche: #B59F89;
+  --blanco: #fff;
+}
+
+/* === GENERAL === */
+body {
+  background-image: url("../landing/Imagenes/CampoMaizFondo.png");/* tono crema medio */
+  background-size: cover;              /* Abarca todo el área del body */
+  background-position: center;         /* Centra la imagen */
+  background-repeat: no-repeat;        /* No se repite */
+  background-attachment: fixed; 
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: var(--cafe-choco);
+  margin: 0;
+  padding: 0;
+}
+
+/* === CONTENEDOR PRINCIPAL === */
+.contenido {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 2rem;
+  
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+
+
+
+.zona-derecha {
+  flex: 2;
+  background-color: white;
+  border: 2px solid var(--dorado-suave);
+  padding: 1.5rem;
+  height: 30rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  min-width: 35%;
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  display: block;
+  flex-direction: column;
+  float: none;
+  clear: both; 
+}
+
+
+/* === MENÚ === */
+.menu {
+  flex: 3;
+  background-image: url('../landing/Imagenes/3433814.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  border: 2px solid var(--dorado-suave);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  max-height: calc(100vh - 180px);
+  overflow-y: auto;
+  min-width: 55%;
+}
+
+
+.menu h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--cafe-choco);
+  margin-top: -1.5rem;
+  margin-bottom: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.menu-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3.5rem 3rem;
+  padding: 2rem 0;
+}
+
+.menu-card {
+  background: var(--blanco);
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  padding: 3rem 1rem 3.5rem;
+  width: 250px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2.5px solid transparent;
+  position: relative;
+  text-align: center;
+}
+
+.menu-card:hover {
+  background: #FFF7BF;
+  transform: translateY(-5px);
+  border-color: var(--dorado-suave);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.menu-img-container {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--blanco);
+  background: var(--maiz-palida);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.menu-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.menu-card span {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--cafe-choco);
+  margin: 1rem 0 0.5rem;
+}
+
+
+
+.btn-menu {
+  margin-top: 0.5rem;
+  display: inline-block;
+  background: var(--cafe-choco);
+  color: var(--blanco);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background 0.2s;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.btn-menu:hover {
+  background: var(--dorado-suave);
+  color: var(--cafe-choco);
+}
+
+
+
+.item-seleccionado {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-contenido {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  max-width: 300px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.modal-botones {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.oculto {
+  display: none;
+}
+
+.item-nombre {
+  flex: 2;
+  font-weight: 600;
+  color: var(--secondary);
+}
+.btn-eliminar {
+  background-color: var(--blanco);
+  color: var(--primary);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: flex-start;
+  margin-left: 15px;
+}
+
+.btn-eliminar:hover {
+  background-color: black;
+  color: var(--blanco);
+  border: none;
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  align-self: flex-start;
+}
+.item-cantidad,
+.item-precio {
+  flex: 1;
+  text-align: right;
+  font-weight: 500;
+  color: var(--accent);
+}
+/* Botones generales */
+button, .btn-menu {
+  background-color: var(--accent);      /* Café chocolate */
+  color: var(--primary);                 /* Amarillo maíz para el texto */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(122, 78, 33, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  user-select: none;
+}
+
+/* Hover y foco */
+button:hover, .btn-menu:hover,
+button:focus, .btn-menu:focus {
+  background-color: var(--secondary);   /* Rojo tortillería */
+  box-shadow: 0 6px 12px rgba(224, 78, 57, 0.5);
+  outline: none;
+  color: var(--primary);
+}
+
+/* Botón deshabilitado */
+button:disabled, .btn-menu:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Botones pequeños (para modal o acciones pequeñas) */
+button.small-btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(122, 78, 33, 0.25);
+}
+
+.total-pago {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  color: var(--secondary);
+}
+
+.pago-cambio label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.pago-cambio input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 25px;
+  border: 2px solid var(--accent);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  box-sizing: border-box;
+}
+
+.pago-cambio button {
+  background-color: var(--accent);
+  color: var(--primary);
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.pago-cambio button:hover {
+  background-color: var(--secondary);
+}
+
+#btnFinalizarVenta {
+  background-color: var(--secondary); /* Rojo tortillería */
+  color: var(--primary);               /* Amarillo maíz */
+  border: none;
+  border-radius: 30px;
+  padding: 15px 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(224, 78, 57, 0.6);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 350px;
+  margin: 1rem auto 0 auto;
+  display: block;
+}
+
+#btnFinalizarVenta:hover:not(:disabled) {
+  background-color: var(--accent); /* Café chocolate */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(122, 78, 33, 0.7);
+}
+
+#btnFinalizarVenta:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.acciones {
+  margin-top: 2rem;
+  width: 100%;
+  display: block;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+
+
+/* Botón de "Vaciar carrito" separado y centrado */
+.acciones button {
+  background-color:white;
+  color: var(--primary);
+  padding: 12px 24px;
+  margin-bottom: 10px;
+  font-weight: 800;
+  box-shadow: 0 5px 15px rgba(224, 78, 57, 0.4);
+  border-radius: 30px;
+  width: 250px;
+  transition: background-color 0.3s ease;
+}
+
+.acciones button:hover {
+  background-color: var(--dorado-suave);
+  box-shadow: 0 7px 20px rgba(122, 78, 33, 0.5);
+}
+
+
+/* Estilo general para inputs */
+input[type="number"],
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--accent);      /* Café chocolate */
+  border-radius: 25px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: var(--secondary);              /* Rojo tortillería */
+  background-color: var(--primary);     /* Amarillo maíz */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  outline: none;
+  user-select: text;
+}
+
+/* Placeholder estilo */
+input::placeholder {
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* Al hacer foco */
+input:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 8px var(--secondary);
+}
+
+/* Para input tipo number específico (flechas pequeñas) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Para Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Input pequeño para modal (como cantidad) */
+input#cantidadInput {
+  max-width: 100px;
+  margin: 0 auto;
+  display: block;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* === CAMPOS DEL MODAL PEDIDO ESPECIAL === */
+
+/* Estilo para input tipo datetime-local dentro del modal */
+.modal-contenido input[type="datetime-local"] {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--accent);
+  border-radius: 25px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: var(--secondary);
+  background-color: var(--primary);
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.modal-contenido input[type="datetime-local"]:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 8px var(--secondary);
+}
+
+/* Estilo para textarea del modal */
+.modal-contenido textarea {
+  width: 100%;
+  padding: 10px 15px;
+  border: 2px solid var(--accent);
+  border-radius: 15px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: var(--secondary);
+  background-color: var(--primary);
+  resize: vertical;
+  min-height: 100px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+#totalPedidoEspecial {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--secondary);
+  background-color: var(--primary);
+  border: 2px solid var(--accent);
+  border-radius: 25px;
+  padding: 10px 15px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+
+.modal-contenido textarea:focus {
+  border-color: var(--secondary);
+  box-shadow: 0 0 8px var(--secondary);
+}
+
+/* Estilo para labels del modal */
+.modal-contenido label {
+  display: block;
+  text-align: left;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+/* Botones del modal */
+#btnEnviarPedidoEspecial, #btnCancelarPedidoEspecial {
+  flex: 1;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 700;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(122, 78, 33, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#btnEnviarPedidoEspecial {
+  background-color: var(--accent);
+  color: var(--primary);
+}
+
+#btnEnviarPedidoEspecial:hover {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+#btnCancelarPedidoEspecial {
+  background-color: white;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+}
+
+#btnCancelarPedidoEspecial:hover {
+  background-color: var(--dorado-suave);
+  color: var(--cafe-choco);
+  border-color: var(--cafe-choco);
+}
+
+
+
+
+/* === ZONA DERECHA === */
+
+
+/* === RESPONSIVE === */
+@media screen and (max-width: 768px) {
+  .contenido {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .menu {
+    width: 100%;
+    flex: none;
+  }
+
+  .zona-derecha {
+    width: 100%;
+    flex: none;
+    margin-top: 2rem;
+  }
+
+  .menu-list {
+    justify-content: center;
+  }
+}

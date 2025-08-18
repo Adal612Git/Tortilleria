@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro Tortillería</title>
+  <link rel="stylesheet" href="registroUsuario.css"/>
+  <!-- Incluye SweetAlert2 en tu HTML antes de tu script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+  <!-- LOGO ESQUINA -->
+  <div class="logo-tortilleria-esquina">
+    <img src="../landing/Imagenes/LogoEjemplo.png" alt="Logo Tortillería Los Amigos">
+  </div>
+
+  <div class="contenedor">
+    <!-- PANEL IZQUIERDO: IMAGEN -->
+    <div class="panel izquierdo"></div>
+
+    <!-- CURVA ONDULADA -->
+    <div class="division-ondulada">
+      <svg viewBox="0 0 800 500" preserveAspectRatio="none">
+        <path d="
+          M300,0
+          C200,150 400,350 300,500
+          L800,500
+          L800,0
+          Z
+        " />
+      </svg>
+    </div>
+
+    <!-- PANEL DERECHO: BIENVENIDA Y FORMULARIO -->
+    <div class="panel derecho">
+      <div class="bienvenida">
+        ¡Hola! Nos alegra verte :)
+      </div>
+      <div class="formulario">
+        <form  id="formRegistro"  action="#" method="post">
+          <input type="text" placeholder="Nombre completo" required />
+          <input type="tel" placeholder="Teléfono" required />
+          <input type="text" placeholder="Domicilio completo (calle, número, colonia, código postal)" required />
+          <input type="email" placeholder="Correo electrónico" required />
+          <input type="password" placeholder="Contraseña" required />
+          <input type="password" placeholder="Repite la contraseña" required />
+          <button type="submit" class="btn-registrar">
+            Registrarse
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="registroUsuario.js"></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard con Filtros y Gráficas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+  <div class="dashboard">
+    <!-- KPI simples -->
+   <section class="card">
+  <h2 id="ventasMesValor">$32,400</h2>
+  <p>Ventas del Mes</p>
+  <div id="mensajeComparacionVentasMesValor" style="font-weight: bold; margin-top: 4px;"></div>
+</section>
+
+<section class="card">
+  <h2 id="ventasMostrador">23</h2>
+  <p>Ventas en mostrador</p>
+  <div id="mensajeComparacionVentasMostrador" style="font-weight: bold; margin-top: 4px;"></div>
+</section>
+
+<section class="card">
+  <h2 id="ventasRepartos">54</h2>
+  <p>Ventas Repartos</p>
+  <div id="mensajeComparacionVentasRepartos" style="font-weight: bold; margin-top: 4px;"></div>
+</section>
+
+<section class="card">
+  <h2 id="numeroTotalVentas">3</h2>
+  <p>Ventas Totales</p>
+  <div id="mensajeComparacionNumeroTotalVentas" style="font-weight: bold; margin-top: 4px;"></div>
+</section>
+
+    <!-- Gráficos -->
+    <section class="card card-wide">
+      <h2>Historial de Ventas</h2>
+      <p>Ventas </p>
+      <div class="contenido">
+        <canvas id="graficoVentas"></canvas>
+      </div>
+    </section>
+    
+
+    <section class="card card-wide">
+      <h2>Cantidad de Pedidos</h2>
+      <p></p>
+      <div class="contenido">
+        <canvas id="graficaComparativa" ></canvas>
+      </div>
+    </section>
+
+    
+
+    <!-- Tabla de ventas -->
+    <section class="card card-wide">
+      <h3>Ventas </h3>
+
+      <div class="filtros">
+        <label>
+          Buscar ID:
+          <input type="text" id="buscarVentasId" placeholder="Ej. 101" />
+        </label>
+        <label>
+          Fecha inicio:
+          <input type="date" id="fechaInicioVentas" />
+        </label>
+        <label>
+          Fecha fin:
+          <input type="date" id="fechaFinVentas" />
+        </label>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>ID Venta</th><th>Fecha</th><th>Tipo Venta</th><th>Total</th></tr>
+        </thead>
+        <tbody id="tablaVentasBody">
+          <!-- Dinámico -->
+        </tbody>
+      </table>
+      <div id="paginacionVentas"></div>
+    </section>
+
+    <!-- Tabla de pedidos -->
+    <section class="card card-wide">
+      <h3>Pedidos </h3>
+
+      <div class="filtros">
+        <label>
+          Buscar ID:
+          <input type="text" id="buscarPedidosId" placeholder="Ej. 201" />
+        </label>
+        <label>
+          Fecha inicio:
+          <input type="date" id="fechaInicioPedidos" />
+        </label>
+        <label>
+          Fecha fin:
+          <input type="date" id="fechaFinPedidos" />
+        </label>
+      </div>
+
+      <table>
+        <thead>
+          <tr><th>ID Pedido</th><th>Fecha</th><th>Estado</th><th>Total</th></tr>
+        </thead>
+        <tbody id="tablaPedidosBody">
+          <!-- Dinámico -->
+        </tbody>
+      </table>
+      <div id="paginacionPedidos"></div>
+
+    </section>
+
+
+    <div id="modalDetalles" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="modalCerrar" class="close">&times;</span>
+    <h3>Detalles del Pedido</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="detalleVentaBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal para detalles del pedido -->
+<div id="modalDetallesPedido" style="display:none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center;">
+  <div style="background: white; padding: 1.5rem; border-radius: 10px; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; position: relative;">
+    <button id="modalCerrarPedido" style="position:absolute; top:10px; right:10px; font-size: 1.5rem; background:none; border:none; cursor:pointer;">&times;</button>
+    
+    <h3>Detalles del Pedido</h3>
+    <h2 id="nombreCliente" style="color: #5C3A21;">Cliente: --</h2>
+    <h2 id="nombreRepartidor" style="color: #5C3A21;">Repartidor: --</h2>
+
+    <table style="width: 100%; border-collapse: collapse;">
+      <thead style="background-color: #ffe38c; color: #5c3a21;">
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="detallePedidoBody">
+        <!-- Aquí se cargan dinámicamente los detalles -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

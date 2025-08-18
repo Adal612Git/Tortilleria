@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Almacén</title>
+  <link rel="stylesheet" href="almacen.css" />
+  <!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+ 
+
+  <div class="contenedor">
+    <!-- Menú 1 -->
+    <section class="menu" id="menu">
+      <h2>producto</h2>
+      <div class="menu-list" id="menu-list">
+        <!-- Aquí se cargarán los productos dinámicamente -->
+      </div>
+    </section>
+
+    <!-- Menú 2 -->
+    <section class="menu" id="menu2">
+      <h2>material</h2>
+      <div class="menu-list" id="menu-list2">
+        <!-- Aquí se agregan los productos listos dinámicamente -->
+      </div>
+    </section>
+
+    <!-- Botón agregar producto -->
+    <button class="agregar" onclick="mostrarFormulario()">➕ Agregar Producto</button>
+  </div>
+
+  <!-- Modal para agregar/eliminar cantidad -->
+  <div id="modal" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModal()">&times;</span>
+      <h3 id="modalNombre"></h3>
+      <p><strong>Stock actual:</strong> <span id="stockActual">0</span></p>
+      <label for="cantidadModificar">Cantidad a modificar:</label>
+      <input type="number" id="cantidadModificar" value="0" min="0" />
+      <label for="cantidad">Precio:</label>
+      <input type="number" id="precio" value="0" min="0" />
+      <div id="campoUnidad" style="display:none; margin-top: 10px;">
+      <label>Unidad:</label>
+      <span id="unidadMostrar"></span>
+      </div>
+      <div class="modal-botones-cantidad">
+        <button onclick="sumar()">➕</button>
+        <button onclick="restar()">➖</button>
+      </div>
+      <button class="btn-guardar" onclick="guardarCantidad()">💾 Guardar</button>
+    </div>
+  </div>
+
+  <div id="modalMateriaPrima" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar" onclick="cerrarModalMateriaPrima()">&times;</span>
+    
+    <h3>Editar Materia Prima</h3>
+    
+    <label for="nombreMateria">Nombre:</label>
+    <input type="text" id="nombreMateria" />
+
+    <label for="stockMateria">Stock actual:</label>
+    <input type="number" id="stockMateria" min="0" />
+
+    <label for="unidadMateria">Unidad:</label>
+    <input type="text" id="unidadMateria" /> <!-- Solo mostrar -->
+
+    <button class="btn-guardar" id="guardarMateriaPrima">💾 Guardar</button>
+  </div>
+</div>
+
+  <!-- Formulario para nuevo producto -->
+<div id="formularioProducto" class="modal-form">
+  <div class="modal-contenidonuevo">
+    <span class="cerrar" onclick="cerrarFormulario()">&times;</span>
+    <h3>Nuevo Producto</h3>
+
+    <label for="nuevoNombre">Nombre:</label>
+    <input type="text" id="nuevoNombre" />
+    
+    <label for="controlaStock">Controla stock:</label>
+<select id="controlaStock">
+  <option value="1">Sí</option>
+  <option value="0" selected>No</option>
+</select>
+
+
+    <label for="menuSeleccion">Menú:</label>
+    <select id="menuSeleccion" onchange="mostrarCamposSegunMenu()">
+      <option value="materiaPrima">Materia Prima</option>
+      <option value="producto">Producto </option>
+    </select>
+
+    <!-- Campos para Materia Prima -->
+    <div id="camposMateriaPrima">
+      <label for="unidadMedida">Unidad de Medida:</label>
+      <input type="text" id="unidadMedida" placeholder="Ej: kg, litros" />
+
+      <label for="cantidadMateriaPrima">Cantidad Inicial:</label>
+      <input type="number" id="cantidadMateriaPrima" min="0" />
+    </div>
+
+    <!-- Campos para Producto Listo -->
+    <div id="camposProductoListo" style="display: none;">
+      <label for="descripcionProducto">Descripción:</label>
+      <textarea id="descripcionProducto" rows="3"></textarea>
+    </div>
+
+    <!-- Comunes a ambos -->
+    <label for="precionuevo">Precio:</label>
+    <input type="number" id="precionuevo" step="0.01" min="0" />
+
+    <label for="stock">Stock:</label>
+    <input type="number" id="stock" min="0" />
+
+    <label id="labelImagen">Imagen del producto:</label>
+
+    <div id="dropArea" 
+        ondrop="handleDrop(event)" 
+        ondragover="event.preventDefault()" 
+        class="drop-area" 
+        style="border: 2px dashed var(--color-30); padding: 1rem; border-radius: 12px; cursor: pointer;">
+      Arrastra la imagen aquí o haz click para seleccionar
+      <input type="file" id="inputArchivo" accept="image/*" style="display:none" onchange="mostrarPreviewArchivo()" />
+    </div>
+
+    <img id="previewImagen" style="display:none; max-width:100%; margin-top:10px; border-radius:12px;" />
+
+    <button class="btn-guardar" id="btn-guardar">Guardar</button>
+  </div>
+</div>
+
+
+
+  <script src="almacen.js" defer></script>
+</body>
+</html>

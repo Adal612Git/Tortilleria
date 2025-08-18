@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historial del Cliente</title>
+  <link rel="stylesheet" href="historial.css">
+</head>
+<body>
+  <main class="dashboard">
+    <!-- Card para historial -->
+    <section class="card card-wide">
+      <h2>📜 Historial de pedidos</h2>
+
+      <!-- Filtros -->
+      <div class="filtros">
+        <label>
+          Desde:
+          <input type="date" id="fechaDesde">
+        </label>
+        <label>
+          Hasta:
+          <input type="date" id="fechaHasta">
+        </label>
+        <label>
+          Buscar:
+          <input type="text" id="buscarHistorial" placeholder="ID">
+        </label>
+      </div>
+
+      <!-- Tabla -->
+      <div class="contenido">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+             
+              <th>Total</th>
+              
+          </thead>
+          <tbody id="tablaHistorial">
+            
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginación -->
+      <div id="paginacionPedidos">
+      
+      </div>
+    </section>
+
+    <!-- Modal para detalles del pedido -->
+<div id="modalDetallesPedido" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span id="modalCerrarPedido" class="close">&times;</span>
+    <h3>Detalles del Pedido</h3>
+    <p id="nombreCliente"></p>
+    <p id="nombreRepartidor"></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="detallePedidoBody">
+        <!-- aquí van los detalles -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Timekeeper - Control de Asistencia</title>
+<link rel="stylesheet" href="horarios.css">
+<!-- SweetAlert2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Lista empleados -->
+  <section class="employee-list">
+    <h2>Empleados</h2>
+    <ul id="employeeList"></ul>
+  </section>
+
+  <!-- Registro eventos -->
+  <section class="event-register">
+    <h2 id="selectedEmployeeTitle">Seleccione un empleado</h2>
+
+    <div class="date-picker">
+      <label for="datePicker">Fecha:</label><br />
+      <input type="date" id="datePicker" max="" />
+    </div>
+
+   <div class="event-buttons">
+<button id="btnEntrada">📥 Entrada</button>
+<button id="btnInicioDescanso">☕ Inicio Descanso</button>
+<button id="btnFinDescanso">🏁 Fin Descanso</button>
+<button id="btnSalida">🚪 Salida</button>
+</div>
+
+  </section>
+
+  <!-- Tabla resumen -->
+  <section class="summary">
+    <h2>Resumen</h2>
+    <div>
+       <label id="fechaSemanaLabel" class="label-semana"></label>
+  
+  <label for="selectSemana" class="label-semana">Selecciona la semana:</label>
+  
+  <select id="selectSemana" class="select-semana"></select>
+</div>
+    <table id="summaryTable">
+      <thead>
+        <tr>
+          <th>Empleado</th>
+          <th>Días Asistidos</th>
+          <th>Salario Acumulado</th>
+          <th>Asistencia</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  
+
+  <!-- Historial -->
+  <section class="history" style="grid-column: 2 / 3;">
+    <h2>Historial</h2>
+   <div class="filtro-container">
+  <label>Mes:
+    <input type="month" id="filterMonth">
+  </label>
+  <label>Semana:
+    <select id="filterWeek">
+      <option value="">Todas</option>
+      <option value="1">Semana 1</option>
+      <option value="2">Semana 2</option>
+      <option value="3">Semana 3</option>
+      <option value="4">Semana 4</option>
+      <option value="5">Semana 5</option>
+    </select>
+  </label>
+  <button id="btn-filtrar">Filtrar</button>
+</div>
+
+    <table id="historyTable">
+     <thead>
+  <tr>
+    <th>📅 Fecha</th>
+    <th>🕗 Entrada</th>
+    <th>☕ Inicio Descanso</th>
+    <th>🏁 Fin Descanso</th>
+    <th>🚪 Salida</th>
+  </tr>
+</thead>
+
+      <tbody></tbody>
+    </table>
+  </section>
+
+</div>
+<div id="modalEdicion" style="display:none;">
+  <div>
+    <span class="close-btn" onclick="cerrarModalEdicion()">×</span>
+    <input type="hidden" id="modalIdUsuario">
+    <input type="hidden" id="modalFecha">
+
+    <label>Entrada: <input type="time" id="modalEntrada"></label>
+    <label>Inicio Descanso: <input type="time" id="modalInicio"></label>
+    <label>Fin Descanso: <input type="time" id="modalFin"></label>
+    <label>Salida: <input type="time" id="modalSalida"></label>
+    
+    <button id="guardarCambios" >Guardar</button>
+  </div>
+</div>
+
+<div id="alertBox"></div>
+<script src="horarios.js"></script>
+
+</body>
+</html>

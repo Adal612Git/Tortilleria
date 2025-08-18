@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard con Sidebar y Header</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+</head>
+<body>
+
+  <div class="contenedor-principal">
+
+    <div class="sidebar" id="sidebar">
+      <button id="toggleBtn">☰</button>
+      <h2></span> <span class="text">Los Amigos</span></h2>
+<ul>
+  <li id="menuInicio"><a onclick="handleMenuClick(this, '../admin/admin.html')" class="active"><span class="icon">🏠</span> <span class="text">Inicio</span></a></li>
+  <li id="menuPuntoVenta"><a onclick="handleMenuClick(this, '../puntoVenta/index.html')"><span class="icon">🛒</span> <span class="text">Punto de Venta</span></a></li>
+  <li id="menuHistorial"><a onclick="handleMenuClick(this, '../historialCliente/index.html')"><span class="icon">📜</span> <span class="text">Historial</span></a></li>
+  <li id="menuPedidos"><a onclick="handleMenuClick(this, '../pedidos/index.html')"><span class="icon">🛵</span> <span class="text">Pedidos</span></a></li>
+  <li id="menuReportes"><a onclick="handleMenuClick(this, '../reportes/reportes.html')"><span class="icon">📊</span> <span class="text">Reportes</span></a></li>
+  <li id="menuAlmacen"><a onclick="handleMenuClick(this, '../almacen_final/almacen.html')"><span class="icon">📦</span> <span class="text">Almacén</span></a></li>
+  <li id="menuUsuarios"><a onclick="handleMenuClick(this, '../usuarios/usuario.html')"><span class="icon">👥</span> <span class="text">Usuarios</span></a></li>
+  <li id="menuCheckList"><a onclick="handleMenuClick(this, '../timekeeper/horarios.html')"><span class="icon">📋</span> <span class="text">CheckList</span></a></li>
+  <li id="menuMapa"><a onclick="handleMenuClick(this, '../Mapa/index.html')"><span class="icon">🗺️</span> <span class="text">Mapa</span></a></li>
+  <li id="menuCerrarSesion"><a onclick="cerrarSesion()"><span class="icon">🚪</span> <span class="text">Cerrar Sesión</span></a></li>
+</ul>
+
+
+    </div>
+
+    <div class="contenido-principal">
+      <header class="dashboard-header">
+        <div class="empresa-fondo">
+        <div class="empresa"><img src="../landing/Imagenes/LogoEjemplo.png">Tortillería Los Amigos</div>
+        </div>
+        <div class="info-usuario">
+          <span id="nombreUsuario">Pablo Torres</span> |
+          <span id="rolUsuario">Administrador</span> |
+          <span id="fechaActual"></span>
+        </div>
+      </header>
+
+      <div class="main-content">
+        <iframe id="miIframe" ></iframe>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="dashboard.js"></script>
+  <script>
+    // Fecha actual en header
+    const fechaSpan = document.getElementById('fechaActual');
+    function actualizarFecha() {
+      const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+      const hoy = new Date().toLocaleDateString('es-MX', opciones);
+      fechaSpan.textContent = hoy;
+    }
+    actualizarFecha();
+  </script>
+
+</body>
+</html>

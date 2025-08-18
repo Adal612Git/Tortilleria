@@ -1,0 +1,120 @@
+:root {
+  --primary:    #FFFFFF;    /* Fondo general blanco */
+  --secondary:  #81C784;    /* Verde claro */
+  --accent:     #FFC107;    /* Amarillo fuerte */
+  --neutral-dark: #4E342E;  /* Café oscuro */
+  --neutral-light: #FFF7DF; /* Maíz claro */
+  --border-cafe: #7A4E21;   /* Café chocolate */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: var(--primary);
+  color: var(--neutral-dark);
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: var(--neutral-light); /* Maíz claro */
+  color: var(--neutral-dark);
+  padding: 20px;
+  border-right: 2px solid var(--neutral-light);
+}
+
+.sidebar h2 {
+  margin-bottom: 15px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 10px;
+  background: var(--primary); /* Blanco */
+  margin-bottom: 5px;
+  cursor: pointer;
+  border-radius: 8px;
+  color: var(--neutral-dark);
+  transition: background 0.3s, color 0.3s;
+}
+
+.sidebar li:hover {
+  background: var(--secondary); /* Verde claro */
+  color: white;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.buttons {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  background: var(--accent);
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  transition: background 0.3s, color 0.3s;
+}
+
+button:hover {
+  background: var(--secondary);
+  color: white;
+}
+
+.historial {
+  margin-top: 30px;
+}
+
+#historyOutput {
+  margin-top: 15px;
+  background: white;
+  border: 2px solid var(--border-cafe);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  max-height: 300px;
+  overflow-y: auto;
+  color: var(--neutral-dark);
+}
+
+.alertBox {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 25px;
+  border: 3px solid var(--secondary);
+  border-radius: 16px;
+  text-align: center;
+  display: none;
+  z-index: 999;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.alertBox h3 {
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+

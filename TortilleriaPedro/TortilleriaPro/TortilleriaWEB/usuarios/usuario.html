@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión - Tortillería</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="main-grid">
+
+      <!-- Formularios -->
+      <div class="forms">
+
+        <!-- Formulario Empleados -->
+        <section class="form-section">
+          <h2><i data-lucide="user-plus"></i> Agregar Empleado</h2>
+          <form id="user-form">
+            <input type="text" id="user-name" placeholder="Nombre del empleado" required />
+            <select id="user-role" required>
+              <option value="">Rol</option>
+              <option value="admin">Administrador</option>
+              <option value="repartidor">Repartidor</option>
+              <option value="empleado">empleado</option>
+            </select>
+            <input type="email" id="user-email" placeholder="Correo electrónico" required />
+            <input type="tel" id="user-tel" placeholder="Teléfono" required />
+            <input type="password" id="user-password" placeholder="Contraseña" required />
+            <input type="number" id="user-salary" placeholder="Salario diario (MXN)" min="0" required />
+            <select id="user-dayoff" required>
+              <option value="">Día de descanso</option>
+              <option value="Lunes">Lunes</option>
+              <option value="Martes">Martes</option>
+              <option value="Miércoles">Miércoles</option>
+              <option value="Jueves">Jueves</option>
+              <option value="Viernes">Viernes</option>
+              <option value="Sábado">Sábado</option>
+              <option value="Domingo">Domingo</option>
+            </select>
+            <button type="submit"><i data-lucide="check-circle"></i> Agregar</button>
+          </form>
+        </section>
+
+        <!-- Formulario Clientes -->
+        <section class="form-section">
+          <h2><i data-lucide="user-check"></i> Agregar Cliente</h2>
+          <form id="client-form">
+            <input type="text" id="client-name" placeholder="Nombre del cliente" required />
+            <input type="text" id="client-address" placeholder="Calle, número, colonia, ciudad, estado, país" required />
+            <input type="tel" id="client-phone" placeholder="Teléfono" required />
+            <input type="email" id="client-email" placeholder="Correo electrónico" required />
+            <input type="password" id="client-password" placeholder="Contraseña" required />
+            <button type="submit"><i data-lucide="check-circle-2"></i> Agregar</button>
+          </form>
+        </section>
+      </div>
+
+      <!-- Listados -->
+      <div class="display">
+        <section class="list-section">
+          <h2><i data-lucide="users"></i> Empleados Registrados</h2>
+          <div class="buscador-con-icono">
+            <span class="icono-busqueda">🔍</span>
+            <input type="text" id="buscador-usuarios" placeholder="Buscar usuario...">
+          </div>
+
+          
+          <ul id="user-list"></ul>
+        </section>
+
+        <section class="list-section">
+          <h2><i data-lucide="user-circle-2"></i> Clientes Registrados</h2>
+            <div class="buscador-con-icono">
+            <span class="icono-busqueda">🔍</span>
+            <input type="text" id="buscador-clientes" placeholder="Buscar cliente...">
+          </div>
+          <ul id="client-list"></ul>
+        </section>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Empleado -->
+<div id="modalEmpleado" class="modal">
+  <div class="modal-content">
+    <span class="close" id="cerrarModalEmpleado">&times;</span>
+    <h2 id="tituloEmpleado">Agregar Empleado</h2>
+    <form id="formEmpleado">
+      <input type="hidden" id="empleado-id" />
+      <input type="text" id="empleado-nombre" placeholder="Nombre del empleado" required />
+      <select id="empleado-rol" required>
+        <option value="">Rol</option>
+        <option value="repartidor">Repartidor</option>
+        <option value="empleado">empleado</option>
+      </select>
+      <input type="email" id="empleado-correo" placeholder="Correo electrónico" required />
+      <input type="tel" id="empleado-telefono" placeholder="Teléfono" required />
+      <input type="password" id="empleado-password" placeholder="Contraseña" />
+      <input type="number" id="empleado-salario" placeholder="Salario semanal (MXN)" min="0" required />
+      <select id="empleado-descanso" required>
+        <option value="">Día de descanso</option>
+        <option value="Lunes">Lunes</option>
+        <option value="Martes">Martes</option>
+        <option value="Miércoles">Miércoles</option>
+        <option value="Jueves">Jueves</option>
+        <option value="Viernes">Viernes</option>
+        <option value="Sábado">Sábado</option>
+        <option value="Domingo">Domingo</option>
+      </select>
+      <button type="submit" id="btnGuardarEmpleado">Guardar</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal Cliente -->
+<div id="modalCliente" class="modal">
+  <div class="modal-content">
+    <span class="close" id="cerrarModalCliente">&times;</span>
+    <h2 id="tituloCliente">Agregar Cliente</h2>
+    <form id="formCliente">
+      <input type="hidden" id="cliente-id" />
+      <input type="text" id="cliente-nombre" placeholder="Nombre del cliente" required />
+      <input type="text" id="cliente-direccion" placeholder="Calle, número, colonia, ciudad, estado, país" required />
+      <input type="tel" id="cliente-telefono" placeholder="Teléfono" required />
+      <input type="email" id="cliente-correo" placeholder="Correo electrónico" required />
+      <input type="password" id="cliente-password" placeholder="Contraseña" />
+      <button type="submit" id="btnGuardarCliente">Guardar</button>
+    </form>
+  </div>
+</div>
+
+
+  <script>
+    lucide.createIcons();
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

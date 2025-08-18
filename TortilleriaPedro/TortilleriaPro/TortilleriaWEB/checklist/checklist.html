@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checklist - Timekeeper</title>
+  <link rel="stylesheet" href="checklist.css"/>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Empleados</h2>
+      <ul id="employeeList"></ul>
+    </aside>
+
+    <main class="main-content">
+      <h1 id="selectedEmployee">Selecciona un empleado</h1>
+      <label for="datePicker">Selecciona una fecha:</label>
+      <input type="date" id="datePicker" max="">
+      <div class="buttons">
+        <button onclick="registerEvent('entrada')">Registrar Entrada</button>
+        <button onclick="registerEvent('inicioDescanso')">Inicio Descanso</button>
+        <button onclick="registerEvent('finDescanso')">Fin Descanso</button>
+        <button onclick="registerEvent('salida')">Registrar Salida</button>
+      </div>
+
+      <section class="historial">
+        <h2>Historial</h2>
+        <select id="monthSelect">
+          <option value="">--Mes--</option>
+          <option value="0">Enero</option>
+          <option value="1">Febrero</option>
+          <option value="2">Marzo</option>
+          <option value="3">Abril</option>
+          <option value="4">Mayo</option>
+          <option value="5">Junio</option>
+          <option value="6">Julio</option>
+          <option value="7">Agosto</option>
+          <option value="8">Septiembre</option>
+          <option value="9">Octubre</option>
+          <option value="10">Noviembre</option>
+          <option value="11">Diciembre</option>
+        </select>
+
+        <select id="weekSelect">
+          <option value="">--Semana--</option>
+          <option value="1">Semana 1</option>
+          <option value="2">Semana 2</option>
+          <option value="3">Semana 3</option>
+          <option value="4">Semana 4</option>
+        </select>
+
+        <button onclick="showHistory()">Ver Historial</button>
+        <div id="historyOutput"></div>
+      </section>
+    </main>
+  </div>
+
+  <div id="alertBox" class="alertBox">
+    <h3>Checklist</h3>
+    <p id="alertMessage"></p>
+  </div>
+
+  <script src="checklist.js"></script>
+</body>
+</html>

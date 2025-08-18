@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tortillería Los Amigos</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+  <div class="contenido">
+
+    <!-- Sección del Menú -->
+    <section class="menu" id="menu">
+      <h2>Menú</h2>
+      <div class="menu-list" id="menu-list">
+        <!-- Aquí se cargarán los productos dinámicamente -->
+      </div>
+    </section>
+
+    <!-- Contenedor común para zona-derecha y acciones -->
+    <div class="zona-y-acciones">
+
+      <!-- Sección de Productos Seleccionados -->
+      <div class="zona-derecha" id="zonaSeleccionados">
+        <h2>Seleccionados</h2>
+        <div id="listaSeleccionados">
+          <!-- Aquí irán los productos seleccionados dinámicamente -->
+        </div>
+      </div>
+
+      <!-- Botones de acciones debajo -->
+      <div class="acciones">
+        <button id="vaciarcarrito">Vaciar carrito</button>
+        <button id="btnPedidoEspecial">Pedido Especial</button>
+      </div>
+
+    </div> <!-- Fin zona-y-acciones -->
+
+    <!-- Modales -->
+    <div id="modales">
+
+      <!-- Modal Cantidad o Monto -->
+      <div id="modalCantidad" class="modal oculto">
+        <div class="modal-contenido">
+          <h3 id="modalNombreProducto">Producto</h3>
+
+          <label for="cantidadInput">Cantidad:</label>
+          <input type="number" id="cantidadInput" min="0.01" step="0.01" value="1" />
+
+          <label for="montoInput" style="margin-top: 1rem;">O ingresa monto (pesos):</label>
+          <input type="number" id="montoInput" min="0.01" step="0.01" placeholder="Ej. 25.00" />
+
+          <p id="cantidadCalculada" style="font-weight: bold; margin-top: 0.5rem;"></p>
+
+          <div class="modal-botones" style="margin-top: 1rem;">
+            <button id="btnAgregarCantidad">Agregar</button>
+            <button id="btnCancelarCantidad">Cancelar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Pedido Especial -->
+   <div id="modalPedidoEspecial" class="modal oculto">
+  <div class="modal-contenido">
+    <h3>Pedido Especial</h3>
+
+    <label for="nombreClienteEspecial">Nombre del cliente:</label>
+    <input type="text" id="nombreClienteEspecial" placeholder="Ej. Juan Pérez" />
+
+    <label for="descripcionPedidoEspecial" style="margin-top: 1rem;">Descripción del pedido:</label>
+    <textarea id="descripcionPedidoEspecial" rows="4" placeholder="Detalle del pedido especial..."></textarea>
+
+    <label for="fechaRecogidaEspecial" style="margin-top: 1rem;">Fecha y hora de recogida:</label>
+    <input type="datetime-local" id="fechaRecogidaEspecial" />
+
+         <label for="totalPedidoEspecial" style="margin-top: 1rem;">Total del pedido:</label>
+    <input type="number" id="totalPedidoEspecial" min="0" step="0.01" placeholder="0.00" />
+
+    <div class="modal-botones" style="margin-top: 1rem;">
+      <button id="btnEnviarPedidoEspecial">Enviar Pedido</button>
+      <button id="btnCancelarPedidoEspecial">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+    </div> <!-- Fin de todos los modales -->
+
+  </div> <!-- Fin de contenido -->
+
+  <script src="script.js"></script>
+</body>
+</html>

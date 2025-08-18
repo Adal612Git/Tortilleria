@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Admin - Tortillería Los Amigos</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <main class="dashboard">
+
+    <!-- Tarjeta visual con fondo de maizal -->
+<section class="card empleados card-wide" onclick="window.location.href='../timekeeper/horarios.html'" style="cursor: pointer;">
+  <h3>Empleados</h3>
+
+  <!-- Contenedor con scroll si hay muchas filas -->
+  <div class="tabla-scrollable">
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Asistencia</th>
+          
+        </tr>
+      </thead>
+      <tbody id="tbodyEmpleados">
+        <!-- Filas generadas por JS -->
+      </tbody>
+    </table>
+  </div>
+</section>
+    <!-- Tarjeta central grande de bienvenida -->
+
+<section class="card card-wide" onclick="window.location.href='../pedidos/index.html'" style="cursor: pointer;">
+  <h3>Pedidos Recientes</h3>
+  <div class="tabla-scrollable">
+    <table id="tablaPedidosRecientes">
+      <thead>
+        <tr><th>ID</th><th>Cliente</th><th>Estado</th><th>Total</th></tr>
+      </thead>
+      <tbody>
+        <!-- Se llenará dinámicamente aquí -->
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+
+<!--  Modal -->
+<div class="modal" id="avatarModal">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModal">&times;</span>
+    <h3>Editar Foto de Perfil</h3>
+    <img src="avatar_admin.png" id="modalAvatarPreview" class="admin-avatar preview">
+
+    <!-- Input file invisible, solo accesible por el botón "Cambiar Imagen" -->
+    <input type="file" id="avatarInput" accept="image/*" style="display:none;">
+
+    <div class="modal-buttons">
+      <label for="avatarInput" class="btn">Cambiar Imagen</label>
+      <button class="btn outline" id="removeAvatar">Eliminar Imagen</button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Métricas simples -->
+   <section class="card" onclick="window.location.href='../reportes/reportes.html'" style="cursor: pointer;">
+  <h2 id="ventasMes">$0.00</h2>
+  <p>Total Ventas Mes</p>
+  <div id="mensajeComparacionVentasMesValor" style="font-weight: bold; margin-top: 4px;"></div>
+
+</section>
+
+<section class="card"  onclick="window.location.href='../reportes/reportes.html'" style="cursor: pointer;">
+  <h2 id="ventasMostrador">0</h2>
+  <p>Total Ventas Mostrador</p>
+  <div id="mensajeComparacionVentasMostrador" style="font-weight: bold; margin-top: 4px;"></div>
+</section>
+
+<section class="card"  onclick="window.location.href='../reportes/reportes.html'" style="cursor: pointer;">
+  <h2 id="ventasRepartos">0</h2>
+  <p>Total Ventas Reparto</p>
+  <div id="mensajeComparacionVentasRepartos" style="font-weight: bold; margin-top: 4px;"></div>
+</section>
+
+<section class="card"  onclick="window.location.href='../reportes/reportes.html'" style="cursor: pointer;">
+  <h2 id="numeroTotalVentas">0</h2>
+  <p>Numero Total de Ventas</p>
+  <div id="mensajeComparacionNumeroTotalVentas" style="font-weight: bold; margin-top: 4px;"></div>
+</section>
+
+    <!-- Tabla de pedidos recientes, ancha -->
+
+<!-- Estado del Almacén -->
+
+<!-- Empleados -->
+
+
+
+    <!-- Reportes
+<section class="card card-wide reportes">
+  <h3>Reportes</h3>
+  <div class="tablas-reportes">
+    
+    <div class="tabla-reporte">
+      <h4>Ventas</h4>
+      <table>
+        <tr><th>Fecha</th><th>Total</th></tr>
+        <tr><td>28/07</td><td>$420</td></tr>
+        <tr><td>27/07</td><td>$380</td></tr>
+        <tr><td>26/07</td><td>$510</td></tr>
+      </table>
+    </div>
+
+    <div class="tabla-reporte">
+      <h4>Stock</h4>
+      <table>
+        <tr><th>Producto</th><th>Cantidad</th></tr>
+        <tr><td>Tortillas</td><td>2000</td></tr>
+        <tr><td>Masa</td><td>300</td></tr>
+        <tr><td>Salsas</td><td>150</td></tr>
+      </table>
+    </div>
+
+
+
+  </div>
+</section> -->
+
+
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

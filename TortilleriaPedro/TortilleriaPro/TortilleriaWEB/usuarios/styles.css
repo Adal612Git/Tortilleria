@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+  --fondo-principal: #FFF7DF;       /* crema claro para tortillería */
+  --color-primario: #f4c542;        /* mostaza suave */
+  --color-secundario: #c75b39;      /* terracota */
+  --color-acento: #5a8f7b;          /* verde suave */
+  --blanco: #ffffff;
+  --gris-suave: #f1f1f1;
+  --sombra: rgba(0, 0, 0, 0.1);
+  --borde: #ddd;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+   background-image: url("../landing/Imagenes/CampoMaizFondo.png");/* tono crema medio */
+  background-size: cover;              /* Abarca todo el área del body */
+  background-position: center;         /* Centra la imagen */
+  background-repeat: no-repeat;        /* No se repite */
+  background-attachment: fixed; 
+  padding: 20px;
+  color: #333;
+
+  background-repeat: repeat;
+  background-size: auto;
+}
+
+/* Estilo general de encabezados */
+h1, h2, h3, h4, h5, h6 {
+  color: #7A4E21;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* Formularios */
+.forms {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-section {
+  background-color: var(--blanco);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--sombra);
+  border: 1px solid var(--borde);
+}
+
+.form-section h2 {
+  margin-bottom: 15px;
+  color: #7A4E21;
+  font-family: Arial, sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+form input,
+form select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid var(--borde);
+  background-color: var(--gris-suave);
+  transition: 0.3s;
+}
+
+form input:focus,
+form select:focus {
+  outline: none;
+  border-color: var(--color-acento);
+  background-color: #fff;
+}
+
+button {
+  padding: 12px;
+  background-color: var(--color-primario);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #e0b437;
+  color: var(--blanco);
+}
+
+/* Lista de visualización */
+.display {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 700px;
+  
+}
+
+.list-section {
+  background-color: var(--blanco);
+  padding: 20px;
+  height: 530px;
+  overflow-y: scroll;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--sombra);
+  border: 1px solid var(--borde);
+}
+
+.list-section h2 {
+  margin-bottom: 15px;
+  color: #7A4E21;
+  font-family: Arial, sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li {
+  background-color: var(--gris-suave);
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Íconos */
+ul li::before {
+  content: "👤";
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.activo {
+  background-color: #e7ffe7;
+}
+
+.inactivo {
+  background-color: #ffe7e7;
+}
+
+.acciones {
+  display: inline-flex;
+  gap: 5px;
+  margin-left: 30px;
+  ;
+}
+
+.acciones button {
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  background: none;
+  font-size: 16px;
+}
+
+span{
+  width: 100%;
+}
+
+.buscador-con-icono {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 1rem 0;
+}
+
+.buscador-con-icono input {
+  width: 100%;
+  padding: 10px 10px 10px 36px; /* espacio para el icono */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.3s ease;
+  background-color: #fff;
+}
+
+.buscador-con-icono input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.icono-busqueda {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #888;
+  pointer-events: none;
+}
+
+/* Modal base */
+.modal {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* Contenido modal */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 400px;
+  position: relative;
+}
+
+/* Botón cerrar */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+

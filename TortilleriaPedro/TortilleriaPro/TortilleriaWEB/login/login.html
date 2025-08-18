@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- Pablito: HTML5 super claro para login animado -->
+<html lang="es">
+<head>
+  <!-- Pablito: Acentos y ñ sin lío -->
+  <meta charset="UTF-8" />
+  <!-- Pablito: Ajuste responsivo en móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Pablito: Título de la pestaña del navegador -->
+  <title>Login - Tortillería Los Amigos</title>
+  <!-- Pablito: Vincular estilos de ring login -->
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <!-- Pablito: Contenedor principal con anillos animados -->
+  <div class="ring">
+    <i style="--clr: var(--secondary);"></i>
+    <i style="--clr: var(--accent);"></i>
+    <i style="--clr: var(--verde-vivo);"></i>
+
+    <!-- Pablito: Formulario centrado dentro de los anillos -->
+    <div class="login">
+      <h2>Iniciar Sesión</h2>
+      <form id="loginForm">
+        <div class="inputBx">
+          <input type="text" name="correo" placeholder="Usuario" required />
+        </div>
+        <div class="inputBx">
+          <input type="password" name="password" placeholder="Contraseña" required />
+        </div>
+        <div class="inputBx">
+          <input type="submit" value="Entrar" />
+        </div>
+      </form>
+
+      <!-- Pablito: Divisor con línea y texto -->
+      <div class="divider">
+        <span> O </span>
+      </div>
+
+      <!-- Pablito: Botones sociales solo con iconos -->
+      <!-- <div class="social-login">
+        <button class="social-btn google" aria-label="Google">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/google.svg" alt="Google" />
+        </button>
+        <button class="social-btn facebook" aria-label="Facebook">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/facebook.svg" alt="Facebook" />
+        </button>
+        <button class="social-btn iphone" aria-label="Apple">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/apple.svg" alt="Apple" />
+        </button>
+      </div> -->
+
+      <!-- Pablito: Enlaces de ayuda y registro -->
+      <div class="links">
+        <a href="../Registro/registroUsuario.html">¿Olvidaste tu contraseña?</a>
+        <a href="#">Registrarse</a>
+      </div>
+      
+      <!-- Mensaje de estado login -->
+      <p id="mensaje"></p>
+    </div>
+  </div>
+
+  <script src="login.js"></script>
+</body>
+</html>
