@@ -1,21 +1,20 @@
-# Backlog — MoSCoW
+# Backlog MoSCoW (resumen)
 
 ## Must
-- Punto de venta offline
-  - **Criterios de aceptación:** registrar ventas sin conexión y persistir en SQLite.
-- Gestión de inventario
-  - **Criterios de aceptación:** actualizar existencias y kardex automáticamente.
-- Backups automáticos
-  - **Criterios de aceptación:** ejecutar backup diario y verificar integridad.
+- Desktop offline (instalador USB), Auth+RBAC, Inventario+Kardex, Masa→Totopos.
+- Ventas, Cajas (apertura/corte), Reparto + Reporte por tienda.
+- Validación/Sanitización, Auditoría.
+- Reportes (mes/producto/monto) con líneas, export PDF/CSV.
+- Backups y Restore, Actualización offline.
 
 ## Should
-- Sincronización con SaaS
-- Reportes PDF
+- Logs y visor de eventos, colas de sincronización, atajos POS, plantillas PDF.
 
 ## Could
-- Integración con impresoras de red
-- Soporte multi idioma
+- Etiquetas/QR, histórico comparativo anual, combos.
 
-## Won't
-- Aplicación móvil nativa
-- Integración con CRM externo
+## Won’t (ahora)
+- Sucursales, integraciones nube avanzadas, mapas en vivo pesados.
+
+**Criterios de aceptación (Must)**  
+- Venta valida stock; Kardex registra E/S/transformaciones; apertura/corte por rol con PDF; reportes con filtros y export; backups automáticos y restore verificable; actualización offline con rollback.

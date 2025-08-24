@@ -1,12 +1,11 @@
-# Seguridad — Matriz RBAC
+# Matriz RBAC — Sistema Tortillería
 
-| Recurso \ Rol | Dueño | Supervisor | Admin | Despachador | Repartidor |
-| --- | --- | --- | --- | --- | --- |
-| Usuarios | C/R/U/D | C/R/U | R | - | - |
-| Inventario | C/R/U/D | C/R/U | R | R | R |
-| Ventas | C/R/U/D | C/R/U | R | C/R | C/R |
-| Repartos | C/R/U/D | C/R/U | R | - | C/R |
-| Almacén | C/R/U/D | C/R | R | - | - |
-| Reportes | R | R | R | R | R |
+| Recurso                | Dueño | Supervisor | Admin | Despachador | Repartidor |
+|------------------------|:-----:|:----------:|:-----:|:-----------:|:----------:|
+| Inventario / Kardex    | CRUD  |    CRUD    | CRUD  |      R      |     R      |
+| Venta / Cobro          | CRUD  |    CRUD    | CRUD  |     C/R     |     R      |
+| Cajas (apertura/corte) |  Sí   |     Sí     |  No   |     No      |     No     |
+| Reparto / Entregas     |   R   |     R      |  R    |    CRUD     |     C      |
+| Reportes               | Todos | Operativos |Operativos| Operativos | Personales |
 
-**Regla:** empleados (Despachador, Repartidor) no alteran almacén.
+**Regla crítica:** Empleados (Despachador/Repartidor) **no** pueden modificar el almacén.
