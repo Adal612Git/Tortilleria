@@ -1,0 +1,2 @@
+sqlite3 "C:\\ProgramData\\Tortilleria\\data\\app.sqlite" "PRAGMA quick_check;"
+# Pega aquí la salida real cuando se ejecute en QA.
