@@ -1,29 +1,37 @@
-# C4 — Contenedores
+# C4 — Diagrama de Contenedores · Sistema Tortillería
 
 ```mermaid
 flowchart LR
-  subgraph DesktopApp[App Desktop]
-    shell[Shell NativePHP]:::cmp
-    ui[UI Vue]:::cmp
-    core[Laravel Core]:::cmp
-    sqlite[(SQLite)]:::db
-    sync[Servicio Sync]:::svc
-    pdf[Servicio PDF]:::svc
-    backups[Backups]:::svc
-    logs[Logs]:::svc
-    updater[Updater]:::svc
+  subgraph S[Tortillería · App Desktop Offline]
+    shell[NativePHP · Shell Desktop]:::container
+    ui[Vue 3 + Tailwind · UI]:::container
+    core[Laravel Core<br/>(Inventario/Kardex, Ventas/POS, Cajas, Reparto, Reportes, Auditoría)]:::container
+    db[(SQLite local)]:::database
+    sync[Agente de Sync / Colas<br/>SQLite ⇄ PostgreSQL]:::container
+    pdf[Servicio PDF / Impresión]:::container
+    backup[Servicio Backups/Restore]:::container
+    logs[Logs + Auditoría]:::container
+    updater[Actualizador Offline + Rollback]:::container
   end
+
+  printer[[Impresora / PDF Viewer]]:::external
+  usb[[USB (cifrado)]]:::external
+  pg[(PostgreSQL SaaS)]:::external
 
   shell --> ui
   ui --> core
-  core --> sqlite
-  core --> sync
+  shell <--> core
+  core --> db
   core --> pdf
-  core --> backups
   core --> logs
-  updater --> core
+  core --> backup
+  sync --> db
 
-  classDef cmp fill:#eef6ff,stroke:#3b82f6,stroke-width:1px;
-  classDef svc fill:#f6f6f6,stroke:#999,stroke-width:1px;
-  classDef db fill:#fffbe6,stroke:#eab308,stroke-width:1px;
+  pdf --- printer
+  backup --- usb
+  sync --- pg
+
+  classDef container fill:#fff,stroke:#666,stroke-width:1px;
+  classDef database fill:#fffbe6,stroke:#eab308,stroke-width:1px;
+  classDef external fill:#eef6ff,stroke:#3b82f6,stroke-width:1px;
 ```

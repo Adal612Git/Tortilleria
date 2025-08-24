@@ -1,9 +1,11 @@
-# Roadmap SaaS
+# Roadmap SaaS (multitenencia y sincronización)
 
-## Estrategia de multitenencia y sincronización
+## Fase 1 (Desktop offline)
+- SQLite + WAL; backups; empaquetado; RBAC; reportes.
 
-1. **Fase 1 — `tenant_id`:** todas las tablas incluyen `tenant_id`; sincronización básica con SaaS.
-2. **Fase 2 — Esquemas por tenant:** aislamiento lógico con `schema` dedicado; migraciones preparadas desde inicio.
-3. **Fase 3 — Base de datos por tenant:** despliegue independiente, backups y restauración por cliente.
+## Fase 2 (Sync & Multitenant)
+- Sync diferido SQLite⇄PostgreSQL; resolución de conflictos; colas idempotentes.
+- Multitenencia: `tenant_id` (v1) → esquemas (v2) → DB por tenant (v3) según escala y aislamiento.
 
-La aplicación local prepara la "fase 2" desde el diseño, permitiendo migrar a esquemas dedicados sin refactorización mayor.
+## Fase 3 (SaaS Operativo)
+- Panel de tenants; facturación; monitoreo; despliegues azules; backups multi-tenant; operación 24/7.

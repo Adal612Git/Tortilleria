@@ -1,7 +1,16 @@
-# Seguridad — Validación y Sanitización
+# Validación y Sanitización
 
-- Todas las entradas se validan con reglas explícitas (tipos, rangos, formatos).
-- Sanitizar cadenas: `trim`, normalización UTF-8, escape de HTML.
-- Mensajes de error claros y localizados.
-- Al fallar la validación se responde con **422** y detalle del campo.
-- Registrar intentos inválidos y regresar respuestas consistentes.
+## Principios
+- Validar **todo input** antes de persistir.
+- Sanitizar strings (trim/escape) y normalizar números/fechas.
+- Mensajes claros y consistentes (por rol/flujo).
+
+## Reglas por módulo (ejemplos)
+- **Inventario:** cantidades > 0, costos ≥ 0, FK existentes.
+- **POS:** stock suficiente, descuentos válidos, totales ≈ sumas de líneas.
+- **Cajas:** apertura/cierre en orden; arqueo cuadrado (tolerancia definida).
+- **Reparto:** tienda válida, evidencia opcional offline.
+
+## Errores
+- Responder 422 con detalle campo→regla; no exponer stack.
+- Bitácora de intentos inválidos en auditoría (nivel info).

@@ -1,29 +1,28 @@
-# C4 — Contexto
+# C4 — Diagrama de Contexto · Sistema Tortillería
 
 ```mermaid
 flowchart LR
-  subgraph Actores
-    dueno[Dueño]
-    supervisor[Supervisor]
-    admin[Admin]
-    despachador[Despachador]
-    repartidor[Repartidor]
+  A[Cliente]:::actor
+  B[Despachador / Repartidor]:::actor
+  C[Dueño / Supervisor / Admin]:::actor
+
+  subgraph S[Tortillería · App Desktop Offline]
   end
 
-  app[App Desktop]:::app
-  impresora[Impresora/PDF]:::ext
-  usb[(USB)]:::ext
-  saas[(Postgres SaaS)]:::ext
+  P[[Impresora / PDF]]:::external
+  U[[USB (Backups cifrados)]]:::external
+  N[(PostgreSQL SaaS · Sync opcional)]:::external
 
-  dueno --> app
-  supervisor --> app
-  admin --> app
-  despachador --> app
-  repartidor --> app
-  app --> impresora
-  app --> usb
-  app --> saas
+  A -->|Compra / Ticket| S
+  B -->|POS / Reparto| S
+  C -->|Admin / Reportes| S
 
-  classDef app fill:#eef6ff,stroke:#3b82f6,stroke-width:1px;
-  classDef ext fill:#f6f6f6,stroke:#999,stroke-width:1px;
+  S -->|Comprobantes| P
+  S -->|Backups| U
+  S ---|Sincroniza cuando hay Internet| N
+
+  classDef actor fill:#f6f6f6,stroke:#999,stroke-width:1px;
+  classDef external fill:#eef6ff,stroke:#3b82f6,stroke-width:1px;
 ```
+
+Leyenda: Actores, Sistema, Externos.
