@@ -1,5 +1,4 @@
-# ADR-0001 — Stack Desktop Offline (Laravel + NativePHP + Vue 3 + Tailwind)
-**Estado:** Propuesto  
+# ADR-0001 — Stack Desktop Offline (Laravel + NativePHP + Vue 3 + Tailwind) 
 **Fecha:** 2025-08-23  
 **Decisores:** Equipo Tortillería (PO, Tech Lead)
 
